@@ -47,7 +47,7 @@ class MediaInfo {
   /// |          |            | bitrate    |
   Future<Map<String, dynamic>> getMediaInfo(String path) async {
     final RandomAccessFile file = File(path).openSync();
-    final Uint8List headerBytes = file.readSync(defaultMagicNumbersMaxLength);
+    final headerBytes = file.readSync(defaultMagicNumbersMaxLength);
     final String? mimeType = lookupMimeType(path, headerBytes: headerBytes);
 
     if (mimeType?.startsWith('image') == true) {
